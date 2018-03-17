@@ -1,36 +1,39 @@
 package com.iacteam2.webshop.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.mapping.Collection;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "orderrules")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Order implements Serializable {
+public class OrderRule {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="address_fk",referencedColumnName="id", insertable = false, updatable = false)
-    private Address deliveryAddress;
+    @NotBlank
+    private double price;
+
+    @NotBlank
+    private int quantity;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="account_fk", referencedColumnName="id")
-    private Account account;
+    @JoinColumn(name="order_fk", referencedColumnName="id")
+    private Order order;
 
-    @OneToMany(mappedBy="order",targetEntity=OrderRule.class,
-            fetch=FetchType.EAGER)
-    private Collection orders;
+    @ManyToOne(optional=false)
+    @JoinColumn(name="product_fk", referencedColumnName="id")
+    private Product product;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -41,22 +44,4 @@ public class Order implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-
 }

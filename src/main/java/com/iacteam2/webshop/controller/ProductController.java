@@ -11,13 +11,13 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/rest/products")
 public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
     // Get All Products
-    @GetMapping("/all")
+    @GetMapping("")
     public List<Product> getAllNotes() {
         return productRepository.findAll();
     }

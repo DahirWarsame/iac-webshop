@@ -1,5 +1,7 @@
 package com.iacteam2.webshop.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -7,42 +9,46 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "address_table")
+@Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Address implements Serializable {
-
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
-    private String street;
+    @Column(unique = true)
+    private String username;
 
-    private int houseNum;
+    @NotNull
+    @JsonIgnore
+    private String password;
 
-    @NotBlank
-    private String postalCode;
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "customer_fk")
+    private Customer customer;
 
-    @NotBlank
-    private String city;
 
-    @NotBlank
-    private String country;
-
+    @JsonIgnore
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
 
+    @JsonIgnore
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -52,44 +58,28 @@ public class Address implements Serializable {
         this.id = id;
     }
 
-    public String getStreet() {
-        return street;
+    public String getUsername() {
+        return username;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public int getHouseNum() {
-        return houseNum;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHouseNum(int houseNum) {
-        this.houseNum = houseNum;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Date getCreatedAt() {
@@ -106,5 +96,17 @@ public class Address implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", customer=" + customer +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 }

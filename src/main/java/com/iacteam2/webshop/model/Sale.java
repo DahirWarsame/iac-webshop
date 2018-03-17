@@ -1,36 +1,37 @@
 package com.iacteam2.webshop.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
+
 @Entity
-@Table(name = "orders")
+@Table(name = "sales")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Order implements Serializable {
+public class Sale implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="address_fk",referencedColumnName="id", insertable = false, updatable = false)
-    private Address deliveryAddress;
+    private String promotionText;
+
+    @NotBlank
+    private Date fromDate;
+
+    @NotBlank
+    private Date toDate;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="account_fk", referencedColumnName="id")
-    private Account account;
-
-    @OneToMany(mappedBy="order",targetEntity=OrderRule.class,
-            fetch=FetchType.EAGER)
-    private Collection orders;
+    @JoinColumn(name="product_fk", referencedColumnName="id")
+    private Product product;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -41,22 +42,4 @@ public class Order implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-
 }
