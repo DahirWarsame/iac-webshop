@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,28 +27,26 @@ public class Product implements Serializable {
 
     private String description;
 
+    @NotNull
+    private Double price;
+
     @NotBlank
-    private double price;
-
-    @Column(columnDefinition = "LONGBLOB")
-    private byte[] image;
-
-
+    private String imageUrl;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="product_category",
-            joinColumns=
-            @JoinColumn(name="product_fk", referencedColumnName="id"),
-            inverseJoinColumns=
-            @JoinColumn(name="category_fk", referencedColumnName="id")
+    @JoinTable(name = "product_category",
+            joinColumns =
+            @JoinColumn(name = "product_fk", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "category_fk", referencedColumnName = "id")
     )
     @JsonIgnoreProperties("products")
     private List<Category> categories;
 
-    @OneToMany(mappedBy="product",targetEntity=OrderRule.class, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "product", targetEntity = OrderRule.class, fetch = FetchType.LAZY)
     private Collection orderRule;
 
-    @OneToMany(mappedBy="product",targetEntity=Sale.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", targetEntity = Sale.class, fetch = FetchType.LAZY)
     private Collection sale;
 
     @Column(nullable = false, updatable = false)
@@ -92,12 +91,12 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<Category> getCategories() {

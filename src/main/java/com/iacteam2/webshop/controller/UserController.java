@@ -6,6 +6,7 @@ import com.iacteam2.webshop.exception.UsernameAlreadyTakenException;
 import com.iacteam2.webshop.model.User;
 import com.iacteam2.webshop.model.UserForm;
 import com.iacteam2.webshop.repository.UserRepository;
+import com.iacteam2.webshop.security.Jwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class UserController {
 
     private MessageDigest md5 = MessageDigest.getInstance("MD5");
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    @Autowired
+    private Jwt jwt;
     public UserController() throws NoSuchAlgorithmException {
     }
 
@@ -53,6 +57,7 @@ public class UserController {
         User user = new User();
         user.setUsername(userForm.getUsername());
         user.setPassword(getMD5(userForm.getPassword()));
+        user.setJwtToken(jwt.generateJWT(user));
         user.setCustomer(userForm.getCustomer());
 
         return userRepository.save(user);
@@ -69,6 +74,7 @@ public class UserController {
         if (!user.getPassword().equals(getMD5(userForm.getPassword()))){
             throw new InvalidCredentials("invalid login credentials");
         }
+        user.setJwtToken(jwt.generateJWT(user));
 
 
         return user;
@@ -83,9 +89,9 @@ public class UserController {
 
         user.setUsername(userDetails.getUsername());
         user.setPassword(userDetails.getPassword());
+        user.setJwtToken(userDetails.getJwtToken());
 
-        User updatedUser = userRepository.save(user);
-        return updatedUser;
+        return userRepository.save(user);
     }
 
     @DeleteMapping("/{id}")

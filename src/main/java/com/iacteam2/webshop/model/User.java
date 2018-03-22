@@ -30,6 +30,9 @@ public class User implements Serializable {
     @JsonIgnore
     private String password;
 
+    @Transient
+    private String jwtToken;
+
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "customer_fk")
     private Customer customer;
@@ -72,6 +75,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getJwtToken() {
+        return jwtToken;
+    }
+
+    public void setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
     }
 
     public Customer getCustomer() {

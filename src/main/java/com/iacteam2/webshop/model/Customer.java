@@ -43,6 +43,9 @@ public class Customer implements Serializable {
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address homeAddress;
 
+    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name="account_fk",referencedColumnName="id")
+    private Account invoice;
 
     public Long getId() {
         return id;

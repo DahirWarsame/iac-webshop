@@ -34,6 +34,10 @@ public class Account {
     @NotBlank
     private boolean isActive;
 
+    @ManyToOne(optional=false)
+    @JoinColumn(name="customer_fk",referencedColumnName="id", insertable = false, updatable = false)
+    private Customer customer;
+
     @OneToMany(mappedBy="account",targetEntity=Order.class, fetch=FetchType.EAGER)
     private Collection orders;
 
