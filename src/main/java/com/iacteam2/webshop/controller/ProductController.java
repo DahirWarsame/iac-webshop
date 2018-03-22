@@ -10,11 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/rest/products")
 public class ProductController {
     @Autowired
@@ -30,9 +32,11 @@ public class ProductController {
     @PostMapping("/new")
     public Product createProduct(@Valid @RequestBody Product product) {
 
-        Long categoryId = Long.valueOf(4);
-        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
-        product.setCategories(Collections.singletonList(category));
+//        Long categoryId = Long.valueOf(4);
+//        List<Category> categoryList = new ArrayList<>();
+//        categoryList.add(categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId)));
+//
+//        product.setCategories(categoryList);
         return productRepository.save(product);
     }
 
