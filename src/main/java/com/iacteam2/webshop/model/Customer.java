@@ -39,11 +39,11 @@ public class Customer implements Serializable {
     @LastModifiedDate
     private Date updatedAt;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address homeAddress;
 
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @ManyToOne(optional=true, fetch = FetchType.LAZY)
     @JoinColumn(name="account_fk",referencedColumnName="id")
     private Account invoice;
 

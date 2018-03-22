@@ -34,7 +34,7 @@ public class Account {
     @NotBlank
     private boolean isActive;
 
-    @ManyToOne(optional=false)
+    @ManyToOne(optional=true)
     @JoinColumn(name="customer_fk",referencedColumnName="id", insertable = false, updatable = false)
     private Customer customer;
 

@@ -2,7 +2,11 @@ package com.iacteam2.webshop.controller;
 
 
 import com.iacteam2.webshop.exception.ResourceNotFoundException;
+import com.iacteam2.webshop.model.Account;
+import com.iacteam2.webshop.model.Address;
 import com.iacteam2.webshop.model.Customer;
+import com.iacteam2.webshop.repository.AccountRepository;
+import com.iacteam2.webshop.repository.AddressRepository;
 import com.iacteam2.webshop.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,54 +17,81 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/rest/customer")
+@RequestMapping("/api/rest")
 public class CustomerController {
 
     @Autowired
-    CustomerRepository customerRepo;
+    CustomerRepository customerRepository;
+    @Autowired
+    AddressRepository addressRepository;
+    @Autowired
+    AccountRepository accountRepository;
 
     // Get All Notes
-    @GetMapping("")
+    @GetMapping("/customer")
     public List<Customer> getAllCustomers() {
-        return customerRepo.findAll();
+        return customerRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/account")
+    public List<Account> getAllAccounts() {
+        return accountRepository.findAll();
+    }
+    @GetMapping("/address")
+    public List<Address> getAllAddress() {
+        return addressRepository.findAll();
+    }
+
+    @GetMapping("/customer/{id}")
     public Customer getCustomerById(@PathVariable(value = "id") Long customerId) {
-        return customerRepo.findById(customerId)
+        return customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer", "id", customerId));
     }
 
-    @PostMapping("")
+    @PostMapping("/customer/new")
     public Customer createCustomer(@Valid @
             RequestBody Customer customer) {
-        return customerRepo.save(customer);
+
+        return customerRepository.save(customer);
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/address/new")
+    public Address createAddress(@Valid @
+            RequestBody Address address) {
+
+        return addressRepository.save(address);
+    }
+    @GetMapping("/account/new")
+    public Account createAccount(@Valid @RequestBody Account account){
+        return accountRepository.save(account);
+    }
+
+    @PutMapping("/customer/{id}")
     public Customer updateCustomer(@PathVariable(value = "id") Long customerId,
                                    @Valid @RequestBody Customer customerDetails) {
 
-        Customer customer = customerRepo.findById(customerId)
+        Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer", "id", customerId));
 
         customer.setFirstName(customerDetails.getFirstName());
         customer.setLastName(customerDetails.getLastName());
         customer.setHomeAddress(customerDetails.getHomeAddress());
 
-        Customer updatedCustomer = customerRepo.save(customer);
+        Customer updatedCustomer = customerRepository.save(customer);
         return updatedCustomer;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/customer/{id}")
     public ResponseEntity<?> deleteCustomer(@PathVariable(value = "id") Long customerId) {
-        Customer customer = customerRepo.findById(customerId)
+        Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer", "id", customerId));
 
-        customerRepo.delete(customer);
+        customerRepository.delete(customer);
 
         return ResponseEntity.ok().build();
     }
+
+
 
 
 }
