@@ -3,8 +3,10 @@ package com.iacteam2.webshop.controller;
 import com.iacteam2.webshop.exception.ResourceNotFoundException;
 import com.iacteam2.webshop.model.Category;
 import com.iacteam2.webshop.model.Product;
+import com.iacteam2.webshop.model.Sale;
 import com.iacteam2.webshop.repository.CategoryRepository;
 import com.iacteam2.webshop.repository.ProductRepository;
+import com.iacteam2.webshop.repository.SaleRepository;
 import org.hibernate.*;
 import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +29,19 @@ public class ProductController {
 
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    SaleRepository saleRepository;
 
 
     // Get All Products
     @GetMapping("")
     public List<Product> getAllProduct() {
         return productRepository.findAll();
+    }
+
+    @GetMapping("/sales")
+    public List<Sale> getAllSales() {
+        return saleRepository.findAll();
     }
 
     // Create a new Product

@@ -43,7 +43,7 @@ public class Customer implements Serializable {
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
     private Address homeAddress;
 
-    @ManyToOne(optional=true, fetch = FetchType.LAZY)
+    @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @JoinColumn(name="account_fk",referencedColumnName="id")
     private Account invoice;
 
