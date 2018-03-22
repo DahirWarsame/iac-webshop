@@ -26,12 +26,6 @@ public class CategoryController {
         System.out.println(categoryRepository.findAll());
         return categoryRepository.findAll();
     }
-    @GetMapping("")
-    public Category getOne() {
-        Long categoryId = Long.valueOf(4);
-        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
-        return category;
-    }
 
     @GetMapping("/{id}")
     public Category getCategoryById(@PathVariable(value = "id") Long categoryId) {

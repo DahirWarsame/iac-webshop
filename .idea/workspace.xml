@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="70cbd6c2-ea27-4049-b9f4-ab99c5b083af" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/CategoryController.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/CategoryController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/ProductController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Account.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Account.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Address.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Address.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Category.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Category.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Customer.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Customer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Product.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/Product.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/repository/UserRepositoryCustom.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/repository/UserRepositoryImpl.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change beforePath="$PROJECT_DIR$/webshop.iml" afterPath="$PROJECT_DIR$/webshop.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +28,18 @@
       <file leaf-file-name="CategoryController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/CategoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+            <state relative-caret-position="215">
+              <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRepositoryCustom.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/repository/UserRepositoryCustom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -460,12 +457,12 @@
       <workItem from="1521286743915" duration="10221000" />
       <workItem from="1521396080613" duration="1260000" />
       <workItem from="1521651377833" duration="4258000" />
-      <workItem from="1521712659763" duration="12364000" />
+      <workItem from="1521712659763" duration="12622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54956000" />
+    <option name="totallyTimeSpent" value="55214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -478,6 +475,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
@@ -496,7 +494,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31030577" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31030577" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3238958" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -951,14 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/repository/UserRepositoryCustom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/repository/CategoryRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -975,10 +965,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/repository/UserRepositoryCustom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iacteam2/webshop/controller/CategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        <state relative-caret-position="215">
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>
