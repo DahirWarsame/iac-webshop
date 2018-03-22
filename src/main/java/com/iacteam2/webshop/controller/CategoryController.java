@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-    @RequestMapping("/api/rest/category")
+@RequestMapping("/api/rest/categories")
 public class CategoryController {
 
     @Autowired
@@ -26,6 +26,12 @@ public class CategoryController {
         System.out.println(categoryRepository.findAll());
         return categoryRepository.findAll();
     }
+    @GetMapping("")
+    public Category getOne() {
+        Long categoryId = Long.valueOf(4);
+        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
+        return category;
+    }
 
     @GetMapping("/{id}")
     public Category getCategoryById(@PathVariable(value = "id") Long categoryId) {
@@ -33,7 +39,7 @@ public class CategoryController {
                 .orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
     }
 
-    @PostMapping("")
+    @PostMapping("/new")
     public Category createCategory(@Valid @
             RequestBody Category category) {
         return categoryRepository.save(category);
@@ -48,7 +54,7 @@ public class CategoryController {
 
         category.setName(categoryDetails.getName());
         category.setDescription(categoryDetails.getDescription());
-        category.setImage(categoryDetails.getImage());
+        category.setImageUrl(categoryDetails.getImageUrl());
 
         return categoryRepository.save(category);
     }

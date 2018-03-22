@@ -24,8 +24,8 @@ public class Category implements Serializable{
     private String name;
 
     private String description;
-    @Column(columnDefinition = "LONGBLOB")
-    private byte[] image;
+
+    private String imageUrl;
 
     @ManyToMany(mappedBy="categories", fetch = FetchType.EAGER)
     @JsonIgnoreProperties("categories")
@@ -66,12 +66,12 @@ public class Category implements Serializable{
         this.description = description;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<Product> getProducts() {
