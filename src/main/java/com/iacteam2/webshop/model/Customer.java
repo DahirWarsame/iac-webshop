@@ -39,13 +39,9 @@ public class Customer implements Serializable {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_fk", referencedColumnName = "id")
-    private Address homeAddress;
-
-    @ManyToOne(optional=false, fetch = FetchType.LAZY)
-    @JoinColumn(name="account_fk",referencedColumnName="id")
-    private Account invoice;
+    private Address address;
 
     public Long getId() {
         return id;
@@ -87,12 +83,12 @@ public class Customer implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Address getHomeAddress() {
-        return homeAddress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 }

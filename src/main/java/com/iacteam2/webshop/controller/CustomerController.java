@@ -32,7 +32,6 @@ public class CustomerController {
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
-
     @GetMapping("/account")
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
@@ -61,7 +60,7 @@ public class CustomerController {
 
         return addressRepository.save(address);
     }
-    @GetMapping("/account/new")
+    @PostMapping("/account/new")
     public Account createAccount(@Valid @RequestBody Account account){
         return accountRepository.save(account);
     }
@@ -75,7 +74,7 @@ public class CustomerController {
 
         customer.setFirstName(customerDetails.getFirstName());
         customer.setLastName(customerDetails.getLastName());
-        customer.setHomeAddress(customerDetails.getHomeAddress());
+        customer.setAddress(customerDetails.getAddress());
 
         Customer updatedCustomer = customerRepository.save(customer);
         return updatedCustomer;

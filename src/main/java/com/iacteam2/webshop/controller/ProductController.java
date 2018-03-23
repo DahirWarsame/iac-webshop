@@ -47,10 +47,9 @@ public class ProductController {
     // Create a new Product
     @PostMapping("/new")
     public Product createProduct(@Valid @RequestBody Product product) {
-        CategoryController c = null;
-        System.out.println(c.getCategoryById(Long.valueOf(4)).toString());
         return productRepository.save(product);
     }
+
 
     // Get a Single Product
     @GetMapping("/{id}")

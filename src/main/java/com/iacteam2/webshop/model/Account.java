@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -24,14 +25,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotNull
     private Date openDate;
 
     @ManyToOne(optional=false)
     @JoinColumn(name="address_fk",referencedColumnName="id", insertable = false, updatable = false)
     private Address invoiceAddress;
 
-    @NotBlank
+    @NotNull
     private boolean isActive;
 
     @ManyToOne(optional=true)

@@ -24,11 +24,11 @@ public class Address implements Serializable {
     @NotBlank
     private String street;
 
-    @NotNull
-    private int houseNum;
+
+    private int houseNumber;
 
     @NotBlank
-    private String postalCode;
+    private String postCode;
 
     @NotBlank
     private String city;
@@ -62,20 +62,20 @@ public class Address implements Serializable {
         this.street = street;
     }
 
-    public int getHouseNum() {
-        return houseNum;
+    public int getHouseNumber() {
+        return houseNumber;
     }
 
-    public void setHouseNum(int houseNum) {
-        this.houseNum = houseNum;
+    public void setHouseNumber(int houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public String getCity() {
