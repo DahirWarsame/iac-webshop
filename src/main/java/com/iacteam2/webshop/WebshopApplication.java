@@ -16,8 +16,6 @@ public class WebshopApplication {
 		SpringApplication.run(WebshopApplication.class, args);
 
 		// All that is needed to make request
-//		PaymentsClient pc = new PaymentsClient();
-//		Address ad = new Address();
-//		int code = pc.makePayment("Timo", ad, 10.1F);
+
 	}
 }

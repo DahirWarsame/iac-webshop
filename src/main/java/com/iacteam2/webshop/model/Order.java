@@ -21,7 +21,7 @@ public class Order implements Serializable {
     private Long id;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="address_fk",referencedColumnName="id", insertable = false, updatable = false)
+    @JoinColumn(name="address_fk",referencedColumnName="id", updatable = false)
     private Address deliveryAddress;
 
     @ManyToOne(optional=false)
