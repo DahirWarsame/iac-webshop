@@ -46,10 +46,6 @@ public class Address implements Serializable {
     @LastModifiedDate
     private Date updatedAt;
 
-    public Address(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }
